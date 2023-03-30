@@ -111,6 +111,7 @@ function restart(){
     bombs = []
     container.innerHTML = ""
     document.getElementById("output").innerHTML =""
+    points = 0
 
 }
 
