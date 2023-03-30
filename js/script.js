@@ -85,7 +85,7 @@ function getBomb(){
 
     while(bombs.length < NumBomb){
 
-        const bomb = getRandomNumber(1,parseInt(level))
+        const bomb = getRandomNumber(1 ,parseInt(level))
 
         if(!(bombs.includes(bomb))){
             bombs.push(bomb)
@@ -104,6 +104,7 @@ function getRandomNumber(min,max){
 function restart(){
     let bombs = "";
     container.innerHTML = ""
+    document.getElementById("output").innerHTML =""
 
 }
 
@@ -112,19 +113,30 @@ function getExplose(A,B){
     if(A.includes(parseInt(B))){
         console.log("sei esploso");
         gameFinish(true)
+        document.getElementById("output").innerHTML =  `HAI PERSO! Hai fatto ${points} su ${level} ` 
     } else{
         points++;
 
         if(points === level - NumBomb){
             console.log("hai finito tutte le caselle, HAI VINTO");
             gameFinish(true)
+            document.getElementById("output").innerHTML =  `HAI VINTO! Hai fatto ${points} su ${level} `
         } 
     }
 }
 
 function gameFinish(winLose){
 
-    const square = createSquare()
+    let blokgame = document.createElement("div")
+    container.append(blokgame)
+    
+    if(level === "49"){
+        blokgame.classList.add("blockgame1")
+    } else if(level === "81"){
+        blokgame.classList.add("blockgame2")
+    } else if(level === "100"){
+        blokgame.classList.add("blockgame3")
+    }
 
-    square.classList.add("boom")
+
 }

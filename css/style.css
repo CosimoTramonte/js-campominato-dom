@@ -29,6 +29,8 @@ button{
     justify-content: center;
     align-items: center;
     width: 100vw;
+    position: relative;
+    flex-direction: column;
 }
 
 .facile{
@@ -75,4 +77,25 @@ button{
 
 .boom{
     background-color: brown;
+}
+
+.blockgame1{
+    background-color: rgba(0, 0, 0, 0.459);
+    position: absolute;
+    height: 420px;
+    width: 420px;   
+}
+
+.blockgame2{
+    background-color: rgba(0, 0, 0, 0.459);
+    position: absolute;
+    height: 540px;
+    width: 540px;   
+}
+
+.blockgame3{
+    background-color: rgba(0, 0, 0, 0.459);
+    position: absolute;
+    height: 600px;
+    width: 600px;  
 }
