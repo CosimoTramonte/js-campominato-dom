@@ -8,13 +8,12 @@ La partita termina quando il giocatore clicca su una bomba o quando raggiunge il
 Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba.
 
 ## Steps
--
--
--
--
--
--
--
+- Basando sulla griglia creata, creo una serie di funzioni.
+- Una funzione che, basandosi su un generatore di numeri casuali fino al numero della griglia, crea un array dove inserisce il numero delle bombe.
+- L'array delle bombe e il numero delle caselle viene confrontato, percè se il box selezionato ha l'id che coincide con un id di una bomba, il gioco termina
+- al click vengono aggiunte le classi
+- Al termine del gioco faccio apparire un messaggio con il punteggio e con un over sulla plancia di gioco
+
 
 
 

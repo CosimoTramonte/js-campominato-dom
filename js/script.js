@@ -102,7 +102,7 @@ function getRandomNumber(min,max){
 }
 
 function restart(){
-    let bombs = "";
+    bombs = []
     container.innerHTML = ""
     document.getElementById("output").innerHTML =""
 
@@ -113,14 +113,14 @@ function getExplose(A,B){
     if(A.includes(parseInt(B))){
         console.log("sei esploso");
         gameFinish(true)
-        document.getElementById("output").innerHTML =  `HAI PERSO! Hai fatto ${points} su ${level} ` 
+        document.getElementById("output").innerHTML =  `HAI PERSO! Hai fatto ${points} su ${level-NumBomb} ` 
     } else{
         points++;
 
         if(points === level - NumBomb){
             console.log("hai finito tutte le caselle, HAI VINTO");
             gameFinish(true)
-            document.getElementById("output").innerHTML =  `HAI VINTO! Hai fatto ${points} su ${level} `
+            document.getElementById("output").innerHTML =  `HAI VINTO! Hai fatto ${points} su ${level-NumBomb} `
         } 
     }
 }
