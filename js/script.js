@@ -1,45 +1,52 @@
 
 const container = document.querySelector(".container")
+const main = document.querySelector(".main-wrapper")
 const selectLevel = document.getElementById("level")
 const btnGioca = document.getElementById("gioca")
+let level = selectLevel.value
+
+const NumBomb = 16;
+let bombs = [];
+let points = 0
+let winLose = false
 
 
 
 btnGioca.addEventListener("click", function(){
 
-    container.innerHTML = ""
+    restart()
+    console.log(bombs);
 
-    const level = selectLevel.value
+    level = selectLevel.value
     
-    if(level === "49"){
-        container.classList.add("facile")
-        container.classList.remove("medio", "difficile", "hide")
-    } else if(level === "81"){
-        container.classList.add("medio")
-        container.classList.remove("difficile", "facile", "hide")
-    } else if(level === "100"){
-        container.classList.add("difficile")
-        container.classList.remove("medio", "hide","facile")
-    } else {
-        alert("scegli un livello")
-    }
+    chooseLevel(level);
 
 
     for (let i = 1; i <= level; i++){
-
-        console.log(level)
-        
+      
         const square = createSquare()
         square.id = i
         container.append(square)
 
+        getBomb()
 
         square.addEventListener("click", function(){
 
-            square.classList.toggle("clicked")
+            if(bombs.includes(parseInt(square.id))){
+                square.classList.add("boom")
+            }
+
+            square.classList.add("clicked")
             console.log(square.id)
-        })
+            
+            getExplose(bombs,square.id)
+            console.log(points);
+        })  
+    
     }
+
+    
+
 
 })
 
@@ -48,6 +55,21 @@ btnGioca.addEventListener("click", function(){
 
 //-------- FUNCTIONS ---------//
 
+function chooseLevel(lev){
+
+    if(lev === "49"){
+        container.classList.add("facile")
+        container.classList.remove("medio", "difficile", "hide")
+    } else if(lev === "81"){
+        container.classList.add("medio")
+        container.classList.remove("difficile", "facile", "hide")
+    } else if(lev === "100"){
+        container.classList.add("difficile")
+        container.classList.remove("medio", "hide","facile")
+    } else {
+        alert("scegli un livello")
+    }
+}
 
 
 function createSquare(){
@@ -57,4 +79,52 @@ function createSquare(){
     getsquare.classList.add("box")
 
     return getsquare
+}
+
+function getBomb(){
+
+    while(bombs.length < NumBomb){
+
+        const bomb = getRandomNumber(1,parseInt(level))
+
+        if(!(bombs.includes(bomb))){
+            bombs.push(bomb)
+        }
+    }
+
+    return bombs
+}
+
+
+function getRandomNumber(min,max){
+
+    return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+function restart(){
+    let bombs = "";
+    container.innerHTML = ""
+
+}
+
+function getExplose(A,B){
+
+    if(A.includes(parseInt(B))){
+        console.log("sei esploso");
+        gameFinish(true)
+    } else{
+        points++;
+
+        if(points === level - NumBomb){
+            console.log("hai finito tutte le caselle, HAI VINTO");
+            gameFinish(true)
+        } 
+    }
+}
+
+function gameFinish(winLose){
+
+    const square = createSquare()
+
+    square.classList.add("boom")
 }

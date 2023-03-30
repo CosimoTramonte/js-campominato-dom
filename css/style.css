@@ -61,7 +61,7 @@ button{
     height: 60px;
     width: 60px;
     border: 1px solid white;
-    background-color: rgb(71, 145, 148);
+    background-color: rgb(71, 133, 148);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -70,5 +70,9 @@ button{
 }
 
 .clicked{
-    background-color: rgb(253, 113, 71);
+    background-color: rgb(67, 172, 90);
+}
+
+.boom{
+    background-color: brown;
 }
