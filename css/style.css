@@ -6,6 +6,7 @@
 
 body{
     background-color: rgb(109, 169, 248);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 h1{
@@ -19,9 +20,14 @@ h1{
     align-items: center;
 }
 
+label{
+    color: white;
+}
+
 select,
 button{
     margin-left: 20px;
+    padding: 5px;
 }
 
 .main-wrapper{
@@ -98,4 +104,8 @@ button{
     position: absolute;
     height: 600px;
     width: 600px;  
+}
+
+h1{
+    color: white;
 }

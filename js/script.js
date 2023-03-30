@@ -24,10 +24,12 @@ btnGioca.addEventListener("click", function(){
 
     for (let i = 1; i <= level; i++){
       
+        //creati i quadrati con il loro id
         const square = createSquare()
         square.id = i
         container.append(square)
 
+        //creato l'array di bombs
         getBomb()
 
         square.addEventListener("click", function(){
@@ -39,6 +41,7 @@ btnGioca.addEventListener("click", function(){
             square.classList.add("clicked")
             console.log(square.id)
             
+            //win condition con rilativi risultati
             getExplose(bombs,square.id)
             console.log(points);
         })  
@@ -55,6 +58,7 @@ btnGioca.addEventListener("click", function(){
 
 //-------- FUNCTIONS ---------//
 
+//scelgo il livello in base al valore della select
 function chooseLevel(lev){
 
     if(lev === "49"){
@@ -71,7 +75,7 @@ function chooseLevel(lev){
     }
 }
 
-
+//mi crea l'elemento square a cui aggiungo la classe box
 function createSquare(){
 
     const getsquare = document.createElement("div")
@@ -81,6 +85,7 @@ function createSquare(){
     return getsquare
 }
 
+//Ciclo che, in base al numero random da 1 al numero dei square, pusha nell'array bombs i numeri trovati che non sono già presenti nell'array (ovvimente finchè non arriva al numero voluto di bombe, in questo caso 16) 
 function getBomb(){
 
     while(bombs.length < NumBomb){
@@ -95,12 +100,13 @@ function getBomb(){
     return bombs
 }
 
-
+//generatore di numeri random
 function getRandomNumber(min,max){
 
     return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
+//fa un restart dei valori indicati, così che al prossimo ciclo lo possa ricreare
 function restart(){
     bombs = []
     container.innerHTML = ""
@@ -108,6 +114,7 @@ function restart(){
 
 }
 
+// condizione della vittoria: se tocco la bomba (ovvero che id dello square è uguale a un elemento dell'array bombs) allora perdo, appare il messaggio e metto un'over al gioco così da non renderlo più cliccabile. Se non tocco la bomba i punti si incremenentano e arriverà ad un punto dove li avrò cliccati tutti (escluse le bombe) e quindi vinco.
 function getExplose(A,B){
 
     if(A.includes(parseInt(B))){
@@ -125,6 +132,7 @@ function getExplose(A,B){
     }
 }
 
+//over della vittoria o della sconfitta
 function gameFinish(winLose){
 
     let blokgame = document.createElement("div")
@@ -137,6 +145,4 @@ function gameFinish(winLose){
     } else if(level === "100"){
         blokgame.classList.add("blockgame3")
     }
-
-
 }
